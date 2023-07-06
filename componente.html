@@ -9,14 +9,14 @@
           </div>
         </li>
 
-        <li class="list__item list__item--click" @click="toggleMenu(1)">
+        <li class="list__item list__item--click" @click="toggleMenu('services')">
           <div class="list__button list__button--click">
             <img src="assets/docs.svg" class="list__img">
             <a href="#" class="nav__link">Servicios</a>
-            <img :class="{'list__arrow': showSubMenu[1]}" src="assets/arrow.svg">
+            <img :class="{'list__arrow': showSubMenu['services']}" src="assets/arrow.svg">
           </div>
 
-          <ul class="list__show" :style="{ height: subMenuHeight[1] + 'px' }">
+          <ul class="list__show" :style="{ height: subMenuHeight['services'] + 'px' }">
             <li class="list__inside">
               <a href="#" class="nav__link nav__link--inside">Estoy dentro</a>
             </li>
@@ -34,14 +34,14 @@
           </div>
         </li>
 
-        <li class="list__item list__item--click" @click="toggleMenu(2)">
+        <li class="list__item list__item--click" @click="toggleMenu('notifications')">
           <div class="list__button list__button--click">
             <img src="assets/bell.svg" class="list__img">
             <a href="#" class="nav__link">Notificaciones</a>
-            <img :class="{'list__arrow': showSubMenu[2]}" src="assets/arrow.svg">
+            <img :class="{'list__arrow': showSubMenu['notifications']}" src="assets/arrow.svg">
           </div>
 
-          <ul class="list__show" :style="{ height: subMenuHeight[2] + 'px' }">
+          <ul class="list__show" :style="{ height: subMenuHeight['notifications'] + 'px' }">
             <li class="list__inside">
               <a href="#" class="nav__link nav__link--inside">Estoy dentro</a>
             </li>
@@ -72,19 +72,19 @@ export default {
   data() {
     return {
       showSubMenu: {
-        1: false,
-        2: false
+        services: false,
+        notifications: false
       },
       subMenuHeight: {
-        1: 0,
-        2: 0
+        services: 0,
+        notifications: 0
       }
     };
   },
   methods: {
-        toggleMenu(menuId) {
-      this.showSubMenu[menuId] = !this.showSubMenu[menuId];
-      this.subMenuHeight[menuId] = this.showSubMenu[menuId] ? this.$refs[`subMenu${menuId}`][0].scrollHeight : 0;
+    toggleMenu(menuKey) {
+      this.showSubMenu[menuKey] = !this.showSubMenu[menuKey];
+            this.showSubMenu[menuKey] ? this.$refs[menuKey][0].scrollHeight : 0;
     }
   }
 };
@@ -94,4 +94,4 @@ export default {
 /* Estilos CSS aquí */
 </style>
 
-               
+        
